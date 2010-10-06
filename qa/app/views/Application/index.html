@@ -1,0 +1,24 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if questions.size > 0}
+	<h1>Questions:</h1>
+            #{list items:questions, as:'question'}
+                    <h2><a href="@{Application.show(question.getId(),userId)}">${question.getTitle()}</a></h2>
+                    Author: ${question.getAuthor().getName()} <br>
+                    Posted at: ${question.getTimestamp()} <br>
+                    Voted up: ${question.getVoteUp()} Voted down: ${question.getVoteDown()}
+                    <br><br>
+            #{/list}
+#{/if}
+#{if questions.size == 0}
+	<h1>No Questions yet...</h1>
+#{/if}
+
+#{if !userId.equals("-1")}
+	<h3><a href="@{Admin.addQuestion(userId)}">Add a question</a></h3>
+	You are logged in as ${userName}: <a href="@{Application.logout()}>logout</a>
+#{/if}
+#{else}
+ 	<a href="@{Admin.login()}">login</a>
+#{/else}

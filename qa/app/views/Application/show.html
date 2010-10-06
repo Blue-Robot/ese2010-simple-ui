@@ -1,0 +1,48 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+#{if question}
+	<h1>${question.getTitle()}<br><small><small> Author: ${question.getAuthor().getName()}</small></small></h1>
+	${question.getContent()}<br><br>
+	Posted at: ${question.getTimestamp()} <br>
+	#{if !userId.equals("-1")}
+		<a href="@{Admin.voteQuestionUp(userId,question.getId())}">Voted up: ${question.getVoteUp()}</a>
+		<a href="@{Admin.voteQuestionDown(userId,question.getId())}">Voted down: ${question.getVoteDown()}</a>
+	#{/if}
+	#{else}
+          	Voted up: ${question.getVoteUp()} Voted down: ${question.getVoteDown()}
+    #{/else}
+	<hr/>
+	#{if question.getAnswers().size() > 0}
+		#{list items:question.answers, as:'answer'}
+			<h2>${answer.getTitle()}<small><small> by ${answer.getAuthor().getName()}</small></small></h2>
+			${answer.getContent()} <br><br>
+			Posted at: ${answer.getTimestamp()} <br>
+			#{if !userId.equals("-1")}
+				<a href="@{Admin.voteAnswerUp(userId,question.getId(),answer.getId())}">Voted up: ${answer.getVoteUp()}</a>
+				<a href="@{Admin.voteAnswerDown(userId,question.getId(),answer.getId())}">Voted down: ${answer.getVoteDown()}</a>
+			#{/if}
+			#{else}
+            	Voted up: ${answer.getVoteUp()} Voted down: ${answer.getVoteDown()}
+            #{/else}
+		#{/list}
+	#{/if}
+	#{else}
+		No answers yet...
+	#{/else}
+#{/if}
+#{else}
+	<h1> An error occurred...</h1>
+#{/else}
+<hr/>
+<br>
+#{if !userId.equals("-1")}
+	<h3><a href="@{Admin.addAnswer(question.getId(),userId)}">Add an answer</a></h3>
+	You are logged in as ${userName}
+#{/if}
+#{else}
+ 	You have to log in, before you can add a question
+#{/else}
+<br><br>
+<a href="@{Application.index()}">Home</a>

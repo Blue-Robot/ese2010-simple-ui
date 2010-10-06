@@ -1,0 +1,23 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+ 
+<h3>Post a new answer</h3>
+ 
+#{form @saveAnswer(answerTitle,content,id,userId)}
+     
+     <p>
+        <label>Answer title:</label><br>
+        <input type="text" name="answerTitle" /> 
+     </p>
+     
+     <p>
+        #{field 'content'}
+        <label>Write here:</label><br>
+        <textarea name="content"></textarea>
+        #{/field}
+     </p>
+     
+     <p>
+        <input type="submit" value="Post answer" />
+     </p>
+#{/form}

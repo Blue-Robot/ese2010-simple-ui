@@ -1,0 +1,55 @@
+# Test data
+
+User(bob):
+    name:      Bob
+
+    
+User(jeff):
+    name:       Jeff    
+    
+Question(firstBobQuestion):
+    user:       bob
+    title:      First question
+    content:    I got a problem.
+    timestamp:  2009-03-23
+
+Question(secondBobQuestion):
+    user:       bob
+    title:      Second question
+    content:    I got another problem.
+    timestamp:  2009-03-24
+                    
+Question(jeffQuestion):
+    user:       jeff
+    title:      Jeff's question
+    content:    I got a problem too.
+    timestamp:  2009-03-25
+    
+Answer(jeffAnswer):
+    user:       jeff
+    question:   firstBobQuestion
+    title:      Jeff's answer
+    content:    I got an answer
+    timestamp:  2009-03-26
+    
+Answer(bobAnswer):
+    user:       bob
+    question:   jeffQuestion
+    title:      Bob's answer
+    content:    I got an answer too
+    timestamp:  2009-03-27
+    
+Answer(jeffOtherAnswer):
+    user:       jeff
+    question:   firstBobQuestion
+    title:      Jeff's other answer
+    content:    I got another answer
+    timestamp:  2009-03-28
+
+Answer(bobThank):
+    user:       bob
+    question:   firstBobQuestion
+    title:      Thanks
+    content:    Oh thanks a lot Jeff
+    timestamp:  2009-03-29
+                 

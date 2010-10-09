@@ -5,6 +5,8 @@ then it is looked up in the routes file and the corresponding method is called
 with specified arguments
 Finally the request is rendered as a template and the rendered text is send back to the caller.
 
+Corr: Generally Ok, it's not just GET requests, but all the different HTTP requests that are handled like that.
+
 2.) 
 With the selenium test in which you can define what links/buttons etc. are clicked
 or which keys are pressed. 

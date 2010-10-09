@@ -17,6 +17,8 @@
 
 #{if !userId.equals("-1")}
 	<h3><a href="@{Admin.addQuestion(userId)}">Add a question</a></h3>
+	
+	// correction: You probably missed the " after logout. That's why it won't show logout.
 	You are logged in as ${userName}: <a href="@{Application.logout()}>logout</a>
 #{/if}
 #{else}

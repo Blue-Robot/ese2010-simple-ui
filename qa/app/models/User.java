@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class User {
 	
 	private String name;
+	
+	//corr: Why not make the id an integer? you could get rid of the whole casting,
+	//		and still have a clear identifier! same in  Question and Answer
 	private String id;
 	private ArrayList<Question> questions;
 	private ArrayList<Answer> answers;
@@ -17,6 +20,17 @@ public class User {
 		this.answers = new ArrayList<Answer>();
 		this.votes = new ArrayList<Vote>();
 		UserList.add(this);
+		
+		/* corr: You shouldn't use assertions for those kinds of checks.
+		 		it's possible that assertions aren't enabled which makes 
+				this check rather useless and would allow the user to not use
+				a username. And even if assertions are enabled you can't give 
+				any feedback about what happened because it's an error that's
+				thrown and not an exception. So rather throw an exception that
+				you then handle somewhere or just check whether the username
+				is empty and give the user feedback that the username can't be
+				empty.
+		*/
 		assert !this.name.equals("");
 	}
 	
